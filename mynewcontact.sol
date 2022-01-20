@@ -11,6 +11,8 @@ contract MyNewContract {
         require(balances[addr]>=amount, "solde insuffisant");
         (bool sent, bytes memory data) = addr.call{value:amount}("");
         require(sent, "Error couldn\'t withdraw!");
+		balances[msg.sender] -= msg.value;
+
     }
 
     function solde() public view returns(uint){
